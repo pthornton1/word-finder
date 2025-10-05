@@ -14,7 +14,9 @@ export default function Tile({
   selectable: boolean;
 }) {
   const handleTileClick = () => {
-    if (selectable) onTileSelect(position);
+    if (selectable) {
+      onTileSelect(position);
+    }
   };
 
   if (!completed)

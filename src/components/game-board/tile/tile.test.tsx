@@ -11,6 +11,10 @@ const mockProps = {
 };
 
 describe("Tile component", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it("should render the tile correctly when not completed", () => {
     render(<Tile {...mockProps} />);
     const button = screen.getByRole("button");
@@ -38,9 +42,10 @@ describe("Tile component", () => {
   });
 
   it("should not call onTileSelect when clicked and not selectable", () => {
-    render(<Tile {...mockProps} selectable={false} />);
+    const testProps = { ...mockProps, selectable: false };
+    render(<Tile {...testProps} />);
     const button = screen.getByRole("button");
     button.click();
-    expect(mockProps.onTileSelect).not.toHaveBeenCalled();
+    expect(testProps.onTileSelect).not.toHaveBeenCalled();
   });
 });
