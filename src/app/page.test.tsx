@@ -51,9 +51,9 @@ describe("Home", () => {
     jest.resetAllMocks();
   });
 
-  it("should render the home page correctly", () => {
+  it("should render the home page correctly", async () => {
     render(<Home />);
-    const heading = screen.getByRole("heading", {
+    const heading = await screen.findByRole("heading", {
       name: /Welcome to Word Finder/i,
     });
     expect(heading).toBeInTheDocument();
